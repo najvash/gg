@@ -1,0 +1,500 @@
+<script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+  }
+  </script> 
+      
+      <div w3-include-html="layout/header.html"></div> 
+            
+                <ul class="sidenav" id="mobile-demo">
+                    <li>
+                        <div class="user-view">
+                            <div class="background">
+                            </div>
+                            <p class="center">
+            
+                                <a href="index.html">
+                                  <img src="dist/imge/logo.png" width="120" />
+                                </a>
+                            </p>
+                        </div>
+                    </li>
+
+                    
+                    <li><a href="index.html" >خانه</a></li>
+      <li><a href="driver.html" onclick="gotodiv('#aboutus')">رانندگان</a></li>
+      <li><a href="https://web.20ro.net">نسخه وب اپلیکیشن</a></li>
+      <li>
+          <a asp-action="Download" asp-controller="Home">
+              دانلود اپلیکیشن
+              <i class="material-icons">file_download</i>
+          </a>
+      </li>
+      <li><a href="index.html" onclick="gotodiv('#hiredriver')"> پیوستن به ناوگان بیسرو</a></li>
+      <li><a href="Guide.html">راهنما</a></li>
+      <li><a href="Frequently.html" asp-action="faq">سوالات متداول</a></li>
+      <li><a href="aboutus.html" target="_blank"> درباره ما </a></li>
+      <li><a href="contactus.html" onclick="gotodiv('#contact')"> تماس با ما </a></li>
+
+                </ul>
+
+                
+              <div class="slide nominheight"> 
+                <img class="marginslide" src="dist/imge/slide.png" alt="" width="100%" height="outo" >
+
+                <div class="row ">
+                    <div class="col s12 m6">
+                      
+                      <div class="card transparent darken-1 fixedslide" id="banner">
+                        <div class="card-content white-text" id="banner-content">
+                          <h6>دانلود رایگان</h6>
+                          <span class="card-title">دانلود اپلیکیشن</span>
+                          <p>
+                              با نصب اپلیکیشن بیسرو در گوشی های هوشمند، برای مدرسه فرزند<br> خود سرویسی امن را فراهم کنید، تا فرزندان شما در محیطی سالم به <br>مقصد خود برسند.                             
+                        </p>
+
+                        </div>
+                        <div class="card-actiondownload">
+                          <a href="#"><img src="dist/imge/googleplay.png" alt=""  width="147"> </a>
+                          <a href="#"><img src="dist/imge/appstor.png" alt=""  width="147"> </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                      </div>
+
+
+
+                      <div class="row">
+                          
+                  <div class="col s12 l3">
+                          <div class="col s6">
+                            <p class="center">
+                              <img src="dist/imge/baby.png">
+
+                            </p>
+                            <p class="center"> 
+                              امنیت کودکان و نوجوانان
+                            </p>
+                          </div>
+                          <div class="col s6">
+                              <p class="center">
+                                <img src="dist/imge/wifi.png">
+
+                              </p>
+                              <p class="center"> 
+                               اطلاع از رسیدن سرویس درب منزل
+
+                              </p>
+                            </div>
+                            <div class="col s6">
+                                <p class="center">
+                                  <img src="dist/imge/student.png">
+  
+                                </p>
+                                <p class="center"> 
+                                    اطلاع از سوار و پیاده شدن فرزند در مسیر رفت
+                                </p>
+                              </div>
+                              <div class="col s6">
+                                  <p class="center">
+                                    <img src="dist/imge/school.png">
+    
+                                  </p>
+                                  <p class="center"> 
+                                      اطلاع از سوار شدن فرزند
+    
+                                  </p>
+                                </div>
+                  </div>
+
+
+                      <div class="col m6 hide-on-med-and-down ">
+                          <p class="center">
+                            <img src="dist/imge/taxi.png" alt="" >
+                           </p> 
+                         </div>
+                 
+                       
+                          <div class="col s12 l3">
+                              <div class="col s6">   <p class="center">
+                                    <img src="dist/imge/way.png">
+    
+                                  </p>
+                                  <p class="center"> 
+                                      امکان مشاهده مسیر حرکت سرویس
+
+    
+                                  </p></div>
+                                  <div class="col s6">   <p class="center">
+                                    <img src="dist/imge/car.png">
+    
+                                  </p>
+                                  <p class="center"> 
+                                      امکان اطلاع رسانی راننده در صورت اختلال در خودرو
+
+    
+                                  </p></div>
+                                  <div class="col s6">   <p class="center">
+                                    <img src="dist/imge/money.png">
+    
+                                  </p>
+                                  <p class="center"> 
+                                      قیمت های مناسب       
+                                  </p></div>
+                                  <div class="col s6">   <p class="center">
+                                    <img src="dist/imge/home.png">
+    
+                                  </p>
+                                  <p class="center"> 
+                                      اطلاع از سوار و پیاده شدن فرزند در مسیر برگشت      
+                                  </p></div>
+                      </div>
+  
+                      
+
+                       
+                    
+                          
+                      </div>
+
+                      
+
+
+                          <div class="container">
+                             
+
+                              <div class="row card-shadow">
+                                  <div class="col s12">
+                                    <div class="card blue-grey darken-1">
+                                      
+                                    <div class="col s12 m6">    
+                                        <div class="card-content center  ">
+                                           
+                                           
+                                                <img src="dist/imge/man.png"  width="100%" height="auto">
+                                              
+                                      
+                                        </div>
+                                       
+                                      </div>
+
+                                      <div class="col s12 m6">
+                                        <div class="card-content center">
+                                        
+                                          <h4 class="lineheight">
+                                            
+                                            بیسرو را بیشتر بشناسیم:
+                                          </h4>
+                                          <p>
+                                            در بیسرو امکان حذف رانندگان نامناسب بر اساس امتیاز دهی والدین و پایش سیستم وجود دارد. همچنینسیستم CRM آنلاین جهت دریافت شکایات و انتقادات و پیگیری آن تا رسیدن به نتیجه نهایی نیز وجود دارد. همچنین پنل پشتیبانی امکان بررسی کارکرد سرویس طبق برنامه منظم و از پیش تعیین شده و کنترل تاخیر و تعجیل را دارد. موسسات و مدارس به پنل مدیریت و بررسی شکایات، غیبت ها نیز دسترسی دارند. 
+                                          </p>
+
+                                                                                
+                                           </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                          
+
+
+
+                          
+                           
+                            </div>
+
+                          </div>
+
+                          
+                           
+
+
+                             
+<div class="row backimge" id="backimge">
+
+
+  <div class="">
+      <div class="col s12 l4">
+        <div class="card gradient">
+          <div class="card-content white-text">
+            <div class="circle-border">
+                <div class="circle">  
+                    <i class="large material-icons little">directions_car</i>
+                  </div>
+            </div>
+           
+
+            <span class="card-title margin-title">
+              راهنما:
+      </span>
+            <p class="news">
+                کاربران عزیز می توانند با مراجعه به سایت بیسرو و نصب نسخه تحت وب اپلیکیشن درخواست سرویس خود را ثبت نمایند. 
+                
+          </div>
+          <div class="card-action fix-bottom">
+            <a href="moregide.html">بیشتر</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="">
+        <div class="col s12 l4 ">
+          <div class="card gradient">
+            <div class="card-content white-text">
+                <div class="circle-border">
+                    <div class="circle">  
+                        <i class="large material-icons little">directions_car</i>
+                      </div>
+                </div>
+              <span class="card-title margin-title">
+                  برخی از سوالات متداول:
+                </span>
+              <p class="news">
+                  نحوه انتخاب رانندگان چگونه است؟
+                  تمامی رانندگان بیسرو با حساسیت خاص و انجام مراحل مشخص انتخاب می گردند.
+                  
+              </p>
+            </div>
+            <div class="card-action fix-bottom">
+              <a href="moreFrequently.html">بیشتر</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="">
+          <div class="col s12 l4 ">
+            <div class="card gradient">
+              <div class="card-content white-text">
+                  <div class="circle-border">
+                      <div class="circle">  
+                          <i class="large material-icons little">directions_car</i>
+                        </div>
+                  </div>
+                <span class="card-title margin-title">
+                    مدارک لازم برای ثبت نام رانندگان:
+                </span>
+                <p class="news">
+                    1. اصل و فتوکپی کارت ملی و شناسنامه مالک خودرو و راننده ( چنانچه راننده مالک خودرو نباشد )
+                 </p>
+              </div>
+              <div class="card-action fix-bottom">
+                <a href="moredriver.html">بیشتر</a>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+  </div>
+
+  
+</div>
+                                
+
+                            
+                              <div class=" row center">
+                                <div class="container"> <h6 style="color:#f7941d;">چطور به شما کمک کنیم</h6>
+                              <h4>سوالات خود رابپرسید</h4>
+                              <p class="fontsize">
+                                  اگر نظر، پیشنهاد یا سؤال دارید، لطفا با ما تماس بگیرید. کارکنان ما با کیفیت عالی  به شما کمک خواهند کرد و به تمام سوالات شما پاسخ خواهند داد
+                              </p>
+                            </div>
+                            </div>
+                                   
+<div class="row">
+
+
+  <div class="">
+      <div class="col s12 l4">
+        <div class="card noshadow ">
+          <div class="card-content black-text borderleft center">
+              <img src="dist/imge/location.png" alt="" width="50" height="50">
+
+            <span class="card-title">آدرس ما</span>
+            <p class="news">
+                آدرس: تهران، خیابان ولیعصر، نرسيده به خيابان فاطمي، کوچه میرهادی شرقی، پلاک 16، واحد 7              </p>
+          </div>
+          <div class="card-action">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="">
+        <div class="col s12 l4 ">
+          <div class="card noshadow top ">
+            <div class="card-content black-text borderleft center">
+                <img src="dist/imge/location.png" alt="" width="50" height="50">
+              <span class="card-title ">شماره های تماس</span>
+              <p class="news">
+                  021-88852825 <br>
+                  09102480910 <br>
+                  09102490910 <br>
+              </p>
+            </div>
+            <div class="card-action bordertop">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="">
+          <div class="col s12 l4  ">
+            <div class="card noshadow ">
+              <div class="card-content black-text center">
+                  <img src="dist/imge/location.png" alt="" width="50" height="50">
+
+                <span class="card-title"> ایمیل</span>
+                <p class="news">
+                    20ro.net@info.com
+              </p>
+              </div>
+              <div class="card-action ">
+              </div>
+            </div>
+          </div>
+        </div>
+   
+  </div>
+
+</div>
+
+                 
+                  <div class="fixed-action-btn">
+                      <a class="btn-floating btn-large red">
+                        <i class="large material-icons left ">
+                            view_headline
+                          </i>
+                      </a>
+                      <ul>
+
+                        <li class="left">
+                          <a class="btn-floating green
+                           flt flt-top"><i class="material-icons">
+                              question_answer
+                        </i>
+                      </a>
+                    </li>
+
+                    
+
+
+
+                    <li class="left">
+                        <a class="btn-floating orange
+                         flt flt-top"><i class="material-icons">
+                          notifications_active
+                      </i>
+                    </a>
+                  </li>
+
+
+
+
+
+                        <li class="left">
+                          <a class="btn-floating yellow darken-1 flt"><i class="material-icons">
+                              ring_volume
+                          </i>
+                        </a>
+                      </li>
+
+
+                      </ul>
+                    </div>
+
+
+                    <div w3-include-html="layout/footer.html"></div> 
+
+
+                    <script src="dist/js/jquery-2.1.1.min.js"> </script>
+                    <script src="dist/js/materialize.min.js"></script>
+
+                   
+
+                    <script>  $(document).ready(function(){
+                        $('.fixed-action-btn').floatingActionButton();
+                        var elems = document.querySelectorAll('.sidenav');
+          var options = { edge: 'right', draggable: true, closeOnClick: true };
+          var instance = M.Sidenav.init(elems, options);
+         
+          $('.collapsible').collapsible();
+                      });
+
+
+
+
+                      var x = window.matchMedia("(max-width: 700px)")
+                      if (x.matches) { // If media query matches
+$("#banner").removeClass("fixedslide");
+$("#banner-content").removeClass("white-text");
+$("#backimge").removeClass("backimge");
+$(".gradient").addClass("margin-padding");
+$(".gradient").removeClass("gradient");
+$(".borderleft").removeClass("borderleft");
+$(".marginslide").removeClass("marginslide");
+
+} 
+
+
+includeHTML();
+                      </script>
+
+      </body>
+      </html>
+ 
+
+
+                       
+
+                              
+
+
+
+
+
+
+
+
+
+
+                             
+                            
+
+
+
+
+
+
+                  
+                  

@@ -1,0 +1,52 @@
+﻿<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    </script> 
+
+<div w3-include-html="layout/header.html"></div> 
+
+       <div class="row marginpage heightfooter">
+        <div class="col s12">
+          <div class="card-panel white justifytext">
+
+
+            <span class="black-text">
+              <h6>راهنما: 
+                </h6>
+              <p> 
+                  کاربران عزیز می توانند با مراجعه به سایت بیسرو و نصب نسخه تحت وب اپلیکیشن درخواست سرویس خود را ثبت نمایند. در اپلیکیشن بیسرو امکان ثبت آدرس منزل، نام مدرسه، روزهای کلاس، ساعت کلاس برای یک سال تحصیلی وجود دارد. پرداخت مبلغ سرویس بعد از ثبت نام در سامانه و به صورت آنلاین صورت میگیرد. پس از پرداخت، در کمتر از 48 ساعت راننده تخصیص داده خواهد شد و امکان مشاهده مشخصات راننده و خودرو سرویس توسط والدین وجود دارد.  </p>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div w3-include-html="layout/footer.html"></div> 
+      
+      <script>
+            includeHTML();
+            </script> 
+

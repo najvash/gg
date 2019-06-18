@@ -1,0 +1,65 @@
+﻿<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    </script> 
+
+<div w3-include-html="layout/header.html"></div> 
+
+       <div class="row marginpage heightfooter">
+        <div class="col s12">
+          <div class="card-panel white justifytext">
+            <span class="black-text">
+              <p>
+                <h4>          
+                 بیسرو را بیشتر بشناسیم:
+                  </h4>
+                  <p>
+                      بیسرو سامانه ای است که برای مدیریت تردد دانش­ آموزان که به مقصد کلاس­های آموزشی، مدارس، موسسات و سایر اماکن به صورت منظم سفرمی­کنند، فراهم گردیده است. 
+                  </p>
+
+                  در بیسرو امکان حذف رانندگان نامناسب بر اساس امتیاز دهی والدین  و پایش سیستم وجود دارد. همچنین سیستم CRM  آنلاین جهت دریافت شکایات و انتقادات و پیگیری آن تا رسیدن به نتیجه نهایی نیز وجود دارد. 
+                  همچنین پنل پشتیبانی  امکان بررسی کارکرد سرویس طبق برنامه منظم و از پیش تعیین شده و کنترل تاخیر و تعجیل را دارد. 
+                  موسسات و مدارس به پنل مدیریت و بررسی شکایات، غیبت ها نیز دسترسی دارند.
+                   از دیگر ویژگی های سیستم: اطلاع رسانی ثبت یک سرویس به راننده – دانش آموز – والدین  
+                  امکان ثبت غیبت دانش آموز  
+                   پاسخگویی دائمی تیم پشتیبانی 
+                  ارتقا سطح کیفی سرویس ها با استفاده از بازخوردهای کاربران (دانش آموز،راننده،مدرسه،موسسه) 
+                  امکان جایگزینی سرویس در مواقع اضطراری و اعلام مشخصات راننده و خودرو به والدین، و مسیرها و آدرس کودک به راننده جایگزین 
+                  استفاده از رانندگان دارای کارت صلاحیت سرویس مدارس و حداقل یک سال تجربه کار 
+              </p>
+
+
+          </div>
+        </div>
+      </div>
+      <div w3-include-html="layout/footer.html"></div> 
+      
+      <script>
+            includeHTML();
+            </script> 
+

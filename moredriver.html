@@ -1,0 +1,66 @@
+﻿<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    </script> 
+
+<div w3-include-html="layout/header.html"></div> 
+
+       <div class="row marginpage heightfooter">
+        <div class="col s12">
+          <div class="card-panel white justifytext">
+
+            <span class="black-text">
+              
+
+
+                <h5 dir="RTL">مدارک لازم برای ثبت نام رانندگان:</h5>
+                <p dir="RTL"><span dir="LTR">1</span>. اصل و فتوکپی کارت ملی و شناسنامه مالک خودرو و راننده ( چنانچه راننده مالک خودرو نباشد )</p>
+                <p dir="RTL"><span dir="LTR">2</span>. اصل و فتوکپی گواهی نامه رانندگی</p>
+                <p dir="RTL"><span dir="LTR">3</span>. اصل گواهی عدم اعتیاد</p>
+                <p dir="RTL"><span dir="LTR">4</span>. اصل گواهی سو پیشینه</p>
+                <p dir="RTL"><span dir="LTR">5</span>. اصل و فتوکپی&nbsp; بیمه نامه عمومی (مسافربری) خودرو</p>
+                <p dir="RTL"><span dir="LTR">6</span>.اصل و فتوکپی&nbsp; معاینه فنی خودرو</p>
+                <p dir="RTL"><span dir="LTR">7</span>. عکس راننده <span dir="LTR">4</span>*<span dir="LTR">3</span> جدید</p>
+                <p dir="RTL"><span dir="LTR">8</span>. اصل و فتوکپی کارت خودرو</p>
+                <p dir="RTL"><span dir="LTR">9</span> . سند مالکیت یا اجاره نامه</p>
+                <p dir="RTL"><span dir="LTR">10</span> . مبلغ <span dir="LTR">10</span> میلیون تومان سفته</p>
+                <p>&nbsp;</p>
+
+
+
+
+            </span>
+          </div>
+        </div>
+      </div>
+      <div w3-include-html="layout/footer.html"></div> 
+      
+      <script>
+            includeHTML();
+            </script> 
+

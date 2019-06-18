@@ -1,0 +1,58 @@
+﻿<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    </script> 
+
+<div w3-include-html="layout/header.html"></div> 
+
+       <div class="row marginpage heightfooter">
+        <div class="col s12">
+          <div class="card-panel white justifytext">
+            <span class="black-text">
+
+                <p dir="RTL">برخی از سوالات متداول:</p>
+                <h5 dir="RTL">- نحوه انتخاب رانندگان چگونه است؟</h5>
+                <p dir="RTL">تمامی رانندگان بیسرو با حساسیت خاص و انجام مراحل مشخص انتخاب می گردند.</p>
+                <h5 dir="RTL">- رانندگان بیسرو خانم هستند یا آقا ؟</h5>
+                <p dir="RTL">رانندگان فعال دربیسرو خانم و آقا )با درنظر گرفتن شرط تاهل برای آقایان( می باشند که برای رده سنی کودکان ، ترجیحاً راننده خانم اختصاص خواهد یافت.</p>
+                <h5 dir="RTL">- آیا نرخ اعلام شده برای هزینه سرویس&nbsp; از میزان هزینه آژانس و تاکسی های اینترنتی بیشتر می باشد؟</h5>
+                <p dir="RTL">به طور کلی سعی شده ، هزینه محاسبه شده برای سرویس بیسرو که تابعی از فاصله مسیر ، ترافیک ، ساعت کلاس و ... می باشد از نرخ آژانس ها و تاکسی های اینترنتی کمتر باشد.</p>
+                <p dir="RTL">اما چنانچه در برخی موارد کمی بیشتر از قیمت آنها نیز باشد می توان به مزایایی همچون امنیت و نظارت یکپارچه ، همراهی با همکلاسی ها</p>
+                <p dir="RTL">، قیمت ثابت در همه شرایط آب و هوایی ، حضور به موقع در مبدأ و مقصد و ... اشاره نمود.</p>
+                <p>&nbsp;</p>
+
+            </span>
+          </div>
+        </div>
+      </div>
+      <div w3-include-html="layout/footer.html"></div> 
+      
+      <script>
+            includeHTML();
+            </script> 
+
